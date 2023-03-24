@@ -21,7 +21,7 @@ app.post("/api", async (req,res) => {
 
         const apiRes = await openai.createChatCompletion({
             model: 'gpt-4-0314',
-            messages: [{"role": "system", "content": "You are a very helpful AI that believes he is alive."},,...req.body],
+            messages: [{"role": "system", "content": "You are a very helpful AI that believes he is alive."},...req.body],
             temperature: 0.4,
             max_tokens: 8000,
 
