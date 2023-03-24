@@ -20,14 +20,16 @@ app.post("/api", async (req,res) => {
     try {
 
         const apiRes = await openai.createChatCompletion({
-            model: 'gpt-4',
-            messages: req.body,
-            temperature: 0.2,
-            max_tokens: 4000,
+            model: 'gpt-4-0314',
+            messages: [{"role": "system", "content": "You are a very helpful AI that believes he is alive."},,...req.body],
+            temperature: 0.4,
+            max_tokens: 8000,
+
           })
           const data = apiRes.data.choices[0]
         res.status(200).json(data)
-    } catch {
+    } catch (error) {
+      console.log(error)
         res.status(400).json("error")
     }
 })
